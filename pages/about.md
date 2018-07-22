@@ -1,7 +1,7 @@
 ---
 layout: misc
 title: About
-image: profile.jpg
+image: city-2.jpg
 ---
 
 롤을 접기위한 새로운 취미생활. **개발자 블로그 만들기**. 

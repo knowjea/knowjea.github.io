@@ -7,7 +7,7 @@ tags: [sample]
 image: garbage-collection.jpg
 ---
 
-## finalize 메소드
+> ## finalize 메소드
 
 <pre class="line-numbers"><code class="language-java" data-start="1">public class Rule7 {
 

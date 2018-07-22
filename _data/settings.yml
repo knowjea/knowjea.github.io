@@ -10,8 +10,7 @@ menu:
 - {name: '일상', folder: 'pages', file: 'resources.html'}
 - {name: '여행', folder: 'pages', file: 'sample-posts.html'}
 - {name: '잡담', folder: 'pages', file: 'documentation.html'}
-- {name: 'About', folder: 'pages', file: 'about.html'}
-- {name: 'Contact', folder: 'pages', file: 'contact.html'}
+- {name: '어바웃', folder: 'pages', file: 'about.html'}
 
 # Available social icons are powered by Font Awesome, so you can use any icon that they offer
 social:

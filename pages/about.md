@@ -1,6 +1,6 @@
 ---
 layout: misc
-title: About
+title: 어바웃
 image: profile.jpg
 ---
 

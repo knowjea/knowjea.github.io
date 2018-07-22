@@ -14,7 +14,7 @@ sass:
   style: :nested
 
 # Customise atom feed settings (this is where Jekyll-Feed gets configuration information)
-title:		           "Know Jea : There is no meaning"
+title:		           "Know Jea"
 description:	       "a Jekyll theme for running a blog or publication"
 author:              "Paul Le"
 

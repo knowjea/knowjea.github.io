@@ -118,10 +118,50 @@ public class ExceptionInFinalizeTest {
 ## 성능 저하
 
 객체에 finalize 메소드를 작성하면, 프로그램 성능이 심각하게 저하된다고 한다. (약 430배)
+
 그러나, 실제로 확인 할 수 는 없었다. 잘 이해되지 않는 부분이다.
  
 Object 클래스에 존재하므로 어떠한 클래스든 finalize 메소드를 가지고 있는 것이 아닌가?
-특정한 객체에 finalize 메소드를 오버라이딩 했다고 해서 성능이 왜 저하되는지 이해가 되지 않는다. (도와주세요!)
+
+특정한 객체에 finalize 메소드를 오버라이딩 했다고 해서 성능이 왜 저하되는지 이해가 되지 않는다. 
+
+(도와주세요!)
 
 
-ㅋ 
+
+## finalize 그러면 어디에 사용할까?
+
+위에서 finalize 메소드 안에서 유한한 자원에 메모리 해제를 하면 안된다고 하였다. 즉, 다른 방법 (try-catch-finally)으로 메모리 해제를 해야한다.
+하지만 API 개발자는 항상 클라이언트가 API를 올바르게 사용하지 않을수도 있다는 것을 고려해야한다.
+
+예를 들어, FileOutputSteam 클래스를 이용하여 파일(자원)을 사용하였다면 반드시 close로 메모리를 해제해야한다.
+클라이언트가 close 메소드 사용을 잊을 것을 대비해 언제 호출될지는 모르지만 finalize에 close 메소드를 명시적으로 호출한다.
+
+** 동일한 패턴 클래스들 : FileInputStream, FileOutputSteam, Timer, Connection **
+
+명시적 종료이므로 클라이언트를 위해 로그를 남기는것이 좋으나 위 API개발자는 아쉽게도 하지 않았다.
+
+{% highlight java %}
+public class FileInputStream extends InputStream{
+	// ...
+	
+	 /**
+     * Ensures that the <code>close</code> method of this file input stream is
+     * called when there are no more references to it.
+     *
+     * @exception  IOException  if an I/O error occurs.
+     * @see        java.io.FileInputStream#close()
+     */
+    protected void finalize() throws IOException {
+        if ((fd != null) &&  (fd != FileDescriptor.in)) {
+            /* if fd is shared, the references in FileDescriptor
+             * will ensure that finalizer is only called when
+             * safe to do so. All references using the fd have
+             * become unreachable. We can call close()
+             */
+            close();
+        }
+    }
+}
+	
+{% endhighlight %}

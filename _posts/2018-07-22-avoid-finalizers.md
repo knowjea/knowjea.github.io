@@ -62,3 +62,66 @@ public class FileReadUtil {
 
 }
 {% endhighlight %}
+
+그렇다면 명시적으로 반환해야 하는 자원을 삭제하는 방법은 무엇일까..?
+파일입출력을 해봤다면 익숙한 구문인 try-catch-finally를 사용하면 된다.
+
+{% highlight java %}
+public class TryCatchFinally {
+	public static void main(String[] args) throws IOException {
+		FileInputStream fileInputStream = new FileInputStream("c:/out.txt");
+		try {
+			// do somgting
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			fileInputStream.close();
+		}
+	}
+}
+{% endhighlight %}
+
+
+## 예외를 무시
+
+finalize 메소드 안에서 예외가 발생한다고 하더라도, 해당 예외는 무시되며 스택 트레이스도 표시되지 않는다.
+또한 확인은 하지 못했지만, 해당 finalize 메소드도 중단된다.
+(예제에서 gc가 동작하여 finalize가 호출되도록 하였다. 하지만 system.gc는 finalize 호출을 보장하지는 않지만, 일반적으로는 잘 동작한다.)
+
+{% highlight java %}
+public class ExceptionInFinalizeTest {
+
+	public static void main(String[] args) throws Throwable {
+		ExceptionInFinalizeTest exceptionInFinalizeTest = new ExceptionInFinalizeTest();
+		exceptionInFinalizeTest = null;
+
+		// System.gc does not guarantee finalize, but generally works fine.
+		System.gc();
+	}
+
+	@Override
+	protected void finalize() throws Throwable {
+		System.out.println("The finalize method start");
+
+		// Exceptions are ignored.
+		System.out.println(2 / 0);
+
+		super.finalize();
+
+		System.out.println("The finalize method end");
+	}
+}
+
+{% endhighlight %}
+
+
+## 성능 저하
+
+객체에 finalize 메소드를 작성하면, 프로그램 성능이 심각하게 저하된다고 한다. (약 430배)
+그러나, 실제로 확인 할 수 는 없었다. 잘 이해되지 않는 부분이다.
+ 
+Object 클래스에 존재하므로 어떠한 클래스든 finalize 메소드를 가지고 있는 것이 아닌가?
+특정한 객체에 finalize 메소드를 오버라이딩 했다고 해서 성능이 왜 저하되는지 이해가 되지 않는다. (도와주세요!)
+
+
+ㅋ 

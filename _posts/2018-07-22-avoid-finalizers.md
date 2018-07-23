@@ -137,7 +137,7 @@ Object 클래스에 존재하므로 어떠한 클래스든 finalize 메소드를
 예를 들어, FileOutputSteam 클래스를 이용하여 파일(자원)을 사용하였다면 반드시 close로 메모리를 해제해야한다.
 클라이언트가 close 메소드 사용을 잊을 것을 대비해 언제 호출될지는 모르지만 finalize에 close 메소드를 명시적으로 호출한다.
 
-** 동일한 패턴 클래스들 : FileInputStream, FileOutputSteam, Timer, Connection **
+** 동일한 패턴 클래스들 - FileInputStream, FileOutputSteam, Timer, Connection **
 
 명시적 종료이므로 클라이언트를 위해 로그를 남기는것이 좋으나 위 API개발자는 아쉽게도 하지 않았다.
 

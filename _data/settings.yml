@@ -3,7 +3,7 @@ disqus:
   comments: false
   disqus_shortname: 'millennial-3'
 
-google-ID: ''
+google-ID: 'UA-122982708-1'
 
 menu:
 - {name: '개발', folder: 'pages', file: 'facts.html'}

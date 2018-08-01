@@ -10,7 +10,7 @@ image: captain-hook.jpg
 
 프로그램이 정상 또는 비정상 종료하기 전에 특정 작업을 수행할 수 있도록 자바는 java.lang.Runtime.addShutdownHook(Thread t)을 제공한다.
 
-여기서 정상 또는 비정상 종료의 정의는 명세서에 나와있다.
+여기서 정상 또는 비정상 종료의 정의는 명세서에 나와 있다.
 
 {% highlight %}
 자바의 가상 머신은 두 가지 종류의 이벤트를 받아 종료한다.
@@ -21,7 +21,7 @@ image: captain-hook.jpg
 ## 예제
 
 addShutdownHook() 메소드는 Thread를 인자로 받으므로 상속 후, run 메소드에 특정 작업 코드를 작성한다.
-아래 결과는 "End"가 출력 된 후, "Hook Run" 이 출력된다. 
+아래 결과는 "End"가 출력된 후, "Hook Run" 이 출력된다. 
 
 {% highlight java %}
 public class ShutdownHookTest {
@@ -41,7 +41,7 @@ public class ShutdownHookTest {
 }
 {% endhighlight %}
 
-아래 처럼 예외가 발생해도 "End"는 출력되지 않지만 "Hook Run"이 출력된다.
+아래처럼 예외가 발생해도 "End"는 출력되지 않지만 "Hook Run"이 출력된다.
 {% highlight java %}
 	// ...
 	
@@ -55,7 +55,7 @@ public class ShutdownHookTest {
 {% endhighlight %}
 
 
-콘솔에서 sleep 동안 인터럽트(Crtl+C)를 줄 경우에도 "End"는 출력되지 않지만 "hook Run"이 출력된다.
+콘솔에서 sleep 동안 인터럽트(Ctrl+C)를 줄 경우에도 "End"는 출력되지 않지만 "hook Run"이 출력된다.
 {% highlight java %}
 	// ...
 	
@@ -109,14 +109,14 @@ public class ShutdownHookTest {
 {% endhighlight %}
 
 
-## 등록된 Shutdown Hook의 실행을 막는 종료방법
+## 등록된 Shutdown Hook의 실행을 막는 종료 방법
 
-사용할 일이 별로 없을 것 같지만, Runtime.halt(int)를 사용하면 등록된 Shutdwon Hook을 실행하지 않고 종료된다.
+사용할 일이 별로 없을 것 같지만, Runtime.halt(int)를 사용하면 등록된 Shutdown Hook을 실행하지 않고 종료된다.
 
-만약 종료중에 Halt가 호출될 경우 (종료중이라면 등록된 Shutdown Hook 쓰레드들이 동시에 실행되는 상태) 실행중인 Hook이 마칠떄까지
+만약 종료 중에 Halt가 호출될 경우 (종료 중이라면 등록된 Shutdown Hook 쓰레드들이 동시에 실행되는 상태) 실행 중인 Hook이 마칠 떄까지
 대기하지 않고, 종료한다.
 
-아래 예제를 보면 종료되기전에 halt() 메소드를 호출하였으므로 등록된 Hook이 실행되지 않는다.
+아래 예제를 보면 종료되기 전에 halt() 메소드를 호출하였으므로 등록된 Hook이 실행되지 않는다.
 {% highlight java %}
 	// ...
 	
@@ -130,9 +130,9 @@ public class ShutdownHookTest {
 }
 {% endhighlight %}
 
-## Shutdown Hook 실행되면 , Hook을 실행, 삭제 할 수 없음
+## Shutdown Hook 실행되면, Hook을 실행, 삭제할 수 없음
 
-Shutdown Hook이 시작되면 Hook을 추가할 수도 제거 할 수 없다. 시도할 경우 IllegalStateException 예외가 발생한다.
+Shutdown Hook이 시작되면 Hook을 추가할 수도 제거할 수 없다. 시도할 경우 IllegalStateException 예외가 발생한다.
 
 (삭제 메소드는 Runtime.removeShutdownHook() )
 

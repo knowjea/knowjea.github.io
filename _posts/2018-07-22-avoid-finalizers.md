@@ -267,3 +267,8 @@ public class ChildFinalizerGuardianTest extends ParentFinalizerGuardianTest {
 
 위 코드에서 하위클래스는 super.finalize를 호출하지 않아 상위클래스의 finalize는 호출되지 않는다.
 하지만 익명클래스를 사용해서 Finalizer Guardian을 작성하였으므로, 해당 finalize에서 필요한 자원 해제를 처리한다.
+
+
+
+
+[link to Rule9](https://knowjea.github.io/facts/rule8-obey-the-general-overriding-equals.html).

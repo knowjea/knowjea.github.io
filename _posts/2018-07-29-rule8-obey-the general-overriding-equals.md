@@ -65,15 +65,17 @@ equals 메소드를 오버라이딩 하지않았다.
 * It is reflexive: for any non-null reference value x, x.equals(x) should return true. 
 
 반사성이란 모든 객체는 자기 자신과 같아야 한다. 이 규약을 의도적으로 깨트릴수는 있으나, 그럴 이유도 없고 지키지 않기도 힘들다.
+아래 코드는 의도적으로 깨트렸다.
+
 {% highlight java %}
 public class ViolatingReflexiveTest {
 	int i;
 
 	public static void main(String[] args) {
-		ViolatingReflexiveTest violatingReflexiveTest = new ViolatingReflexiveTest();
-		violatingReflexiveTest.i = 1;
+		ViolatingReflexiveTest test = new ViolatingReflexiveTest();
+		test.i = 1;
 
-		System.out.println(violatingReflexiveTest.equals(violatingReflexiveTest));
+		System.out.println(test.equals(test));
 	}
 
 	@Override
@@ -81,8 +83,6 @@ public class ViolatingReflexiveTest {
 		return ((ViolatingReflexiveTest) obj).i < this.i;
 	}
 }
-
-
 {% endhighlight %}
 
 * It is symmetric: for any non-null reference values x and y, x.equals(y) should return true if and only if y.equals(x) returns true. 

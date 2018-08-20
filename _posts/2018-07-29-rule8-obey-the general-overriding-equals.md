@@ -28,8 +28,9 @@ public class Object {
 }
 {% endhighlight %}
 
-<div class="post_caption">"하지만, 아래의 조건 가운데 하나라도 만족되면 그래도 된다."</div>
-
+```
+하지만, 아래의 조건 가운데 하나라도 만족되면 그래도 된다.
+```
 
 ## equals를 오버라이딩 하지 않아도 되는 경우
 

@@ -1,5 +1,5 @@
 ---
-layout: misc
+layout: default
 title: 어바웃
 image: profile.jpg
 ---

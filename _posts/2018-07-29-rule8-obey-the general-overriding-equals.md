@@ -138,9 +138,8 @@ public class YClass {
  
  
 * **It is transitive: for any non-null reference values x, y, and z, if x.equals(y) returns true and y.equals(z) returns true, then x.equals(z) should return true.**
- 
- 
- 
+
+추이성이란 
 * **It is consistent: for any non-null reference values x and y, multiple invocations of x.equals(y) consistently return true or consistently return false, provided no information used in equals comparisons on the objects is modified.**
  
  

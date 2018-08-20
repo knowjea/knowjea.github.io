@@ -1,7 +1,0 @@
-# Change to true for Disqus comments
-disqus:
-  comments: true
-  disqus_shortname: 'gyeongjae'
-
-google-ID: 'UA-122982708-1'
-

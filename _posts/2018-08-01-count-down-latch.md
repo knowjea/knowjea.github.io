@@ -2,9 +2,10 @@
 layout: post
 title: "JAVA CountDownLatch (다른 쓰레드를 기다리는 방법)"
 author: "Gyeongjae Gwon"
-categories: facts
+categories: 개발
 tags: [java]
 image: wating.jpg
+comments: true
 ---
 
 

@@ -2,9 +2,10 @@
 layout: post
 title: "Avoid finalize (종료자 사용을 피하라)"
 author: "Gyeongjae Gwon"
-categories: facts
-tags: [sample]
+categories: 개발
+tags: [java]
 image: garbage-collection.jpg
+comments: true
 ---
 
 ## finalize 메소드

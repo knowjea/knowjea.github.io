@@ -2,9 +2,10 @@
 layout: post
 title: "JAVA Runtime.addShutdownHook() (종료될 때 특정 작업 수행)"
 author: "Gyeongjae Gwon"
-categories: facts
+categories: 개발
 tags: [java]
 image: captain-hook.jpg
+comments: true
 ---
 
 

@@ -2,9 +2,10 @@
 layout: post
 title: "Obey the general contract when overriding equals (equals를 재정의할 때는 일반 규약을 따르라)"
 author: "Gyeongjae Gwon"
-categories: facts
+categories: 개발
 tags: [java]
 image: obey-the-rules.png
+comments: true
 ---
 
 

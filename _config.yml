@@ -1,24 +1,29 @@
-# Site Build Settings
+# Jekyll configuration
 
-# jekyll-paginate configuration
-paginate:            5
+name: Xixia
+description: Welcome to Xixia！
 
-# Build settings
-markdown:            kramdown
-highlighter:         rouge
-permalink:           none
-plugins:             [jekyll-paginate, jekyll-sitemap, jekyll-feed, jekyll-seo-tag]
+# url is currently only used only for the RSS feed in feed.xml
+url: https://github.com/zxixia/jekyll-xixia
 
-sass:
-  sass_dir: assets/css
-  style: :nested
+# baseurl will often be '', but for a project page on gh-pages, it needs to
+# be the project name.
+# *** IMPORTANT: If your local "jekyll serve" throws errors change this to '' or
+#     run it like so: jekyll serve --baseurl=''
+baseurl: '/jekyll-xixia'
+## default date_format
+date_format: 
+  title: "%B-%-d-%Y"
+  archive: "%b"
+  categories: "%b-%Y"
+  tag: "%b-%Y"
+# Language
+lan: "en" 
 
-# Customise atom feed settings (this is where Jekyll-Feed gets configuration information)
-title:		           "Know Jea"
-description:	       ""
-author:              "Gyeongjae Gwon"
+paginate: 10
 
-# RSS 2.0 can be used instead of Atom by uncommenting following two lines
-#feed:
-#  path: rss-feed.xml
+highlighter: rouge
+markdown: kramdown
+gems: ['jekyll-paginate']
 
+exclude: ['README.md', 'LICENSE', "*.bak"]

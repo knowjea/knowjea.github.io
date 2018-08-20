@@ -1,17 +1,16 @@
-<!doctype html>
-<html>
-{% include google-analytics.html %}
-{% include head.html %}
+{% include header.html %}
 
-<body>
+<div class="wrap">
+    <div class="container container-left">
+        <div class="row">
+            <div class="col-md-3 hidden-xs">
+                {% include sidebar.html %}
+            </div>
+            <div class="col-md-9">
+                {{ content }}
+            </div>
+        </div>
+    </div>
 
-<div class="container">
-  {% include header.html %}
-  <div class="posts-wrapper">
-    {{ content }}
-  </div>
-  {% include footer.html %}
+    {% include footer.html %}
 </div>
-
-</body>
-</html>

@@ -30,3 +30,4 @@ exclude: ['README.md', 'LICENSE', "*.bak"]
 
 
 comments: true
+disqus: gyeongjae

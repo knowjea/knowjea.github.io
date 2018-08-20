@@ -85,11 +85,56 @@ public class ViolatingReflexiveTest {
 	}
 }
 {% endhighlight %}
- 
- 
- 
+
+
+
 * **It is symmetric: for any non-null reference values x and y, x.equals(y) should return true if and only if y.equals(x) returns true.** 
- 
+
+대칭성이란 X가 Y가 같으면, Y도 X와 같아야 한다. 이 규약은 쉽게 깨질 수 있다. 예를 들어 동일한(비슷한) 의미를 가진 다른 클래스인 X와 Y가 존재한다고 하자. X는 Y와 의미가 비슷하기 때문에 자기 자신클래스 뿐만 아니라 Y 클래스와 호환되도도록 equals 메소드에서 Y 클래스를 입력받아서 처리하도록 설계했다. 하지만, Y는 X 클래스가 구현되기 전에 구현된 클래스고 자기자신인 Y만 입력받아서 equals 메소드를 처리하도록 하였다. 따라서 X.equals(Y)는 참일 수 있지만 Y.equlas(X)는 X가 자기자신 클래스가 아니기 때문에 거짓을 항상 반환할 것이다.
+
+
+{% highlight java %}
+public class XClass {
+	public int age;
+
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof XClass) {
+			return age == ((XClass) obj).age;
+		}
+
+		if (obj instanceof YClass) {
+			return age == ((YClass) obj).years;
+		}
+		return false;
+	}
+
+}
+
+public class YClass {
+	public int years;
+
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof YClass) {
+			return years == ((YClass) obj).years;
+		}
+		return false;
+	}
+
+	public static void main(String[] args) {
+		XClass xClass = new XClass();
+		YClass yClass = new YClass();
+
+		xClass.age = 10;
+		yClass.years = 10;
+
+		System.out.println(xClass.equals(yClass)); // true
+		System.out.println(yClass.equals(xClass)); // false
+
+	}
+}
+{% endhighlight %}
  
  
 * **It is transitive: for any non-null reference values x, y, and z, if x.equals(y) returns true and y.equals(z) returns true, then x.equals(z) should return true.**

@@ -26,8 +26,9 @@ public class Rule7 {
 }
 {% endhighlight %}
 
-<div class="post_caption">"하지만 finalize는 예측 불가능하며, 대체로 위험하고, 일반적으로 불필요하다."</div>
-
+```
+하지만 finalize는 예측 불가능하며, 대체로 위험하고, 일반적으로 불필요하다.
+```
 
 ## 실행을 보장하지 않음
 

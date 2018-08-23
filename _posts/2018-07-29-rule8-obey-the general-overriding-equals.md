@@ -90,7 +90,7 @@ public class ViolatingReflexiveTest {
 
 * **It is symmetric: for any non-null reference values x and y, x.equals(y) should return true if and only if y.equals(x) returns true.** 
 
-대칭성이란 X가 Y가 같으면, Y도 X와 같아야 한다. 이 규약은 쉽게 깨질 수 있다. 예를 들어 동일한(비슷한) 의미를 가진 다른 클래스인 X와 Y가 존재한다고 하자. X는 Y와 의미가 비슷하기 때문에 자기 자신클래스 뿐만 아니라 Y 클래스와 호환되도도록 equals 메소드에서 Y 클래스를 입력받아서 처리하도록 설계했다. 하지만, Y는 X 클래스가 구현되기 전에 구현된 클래스고 자기자신인 Y만 입력받아서 equals 메소드를 처리하도록 하였다. 따라서 X.equals(Y)는 참일 수 있지만 Y.equlas(X)는 X가 자기자신 클래스가 아니기 때문에 거짓을 항상 반환할 것이다.
+대칭성이란 X가 Y가 같으면, Y도 X와 같아야 한다. 이 규약은 쉽게 깨질 수 있다. 예를 들어 동일한(비슷한) 의미를 가진 다른 클래스인 X와 Y가 존재한다고 하자. X는 Y와 의미가 비슷하기 때문에 자기 자신클래스 뿐만 아니라 Y 클래스와 호환되도도록 equals 메소드에서 Y 클래스를 입력받아서 처리하도록 설계했다. 하지만, Y는 X 클래스가 구현되기 전에 구현된 클래스고 자기자신인 Y만 입력받아서 equals 메소드를 처리하도록 하였다. 따라서 X.equals(Y)는 참일 수 있지만 Y.equals(X)는 X가 자기자신 클래스가 아니기 때문에 거짓을 항상 반환할 것이다.
 
 
 {% highlight java %}
@@ -139,7 +139,79 @@ public class YClass {
  
 * **It is transitive: for any non-null reference values x, y, and z, if x.equals(y) returns true and y.equals(z) returns true, then x.equals(z) should return true.**
 
-추이성이란 
+추이성이란 수학에서 많이 봤던 "a=b 이고 b=c이면 a=c이다."과 동일한 의미이다. 먼저 이 예제를 보이기 위해 java.awt.Point 클래스를 상속하고, 색상을 추가로 가지는 ColorPoint를 구현한다.
+
+ColorPoint의 equals 메서드는 자신과 동일한 객체만 검사하며 부모 클래스인 Point의 equals메소드와 색상을 비교하여 객체의 동일여부를 판단하도록 구현하였다.
+
+하지만 이는 대칭성(symmetric)을 위반한다. Point를 ColorPoint와 비교하면 좌표 값(x,y)를 비교 하지만, ColorPoint는 자신과 동일한 객체만 검사하므로 부모인 Point가 검사대상이 될 경우 false다. 
+
+{% highlight java %}
+public class ColorPoint extends Point {
+	private final Color color;
+
+	public ColorPoint(int x, int y, Color color) {
+		super(x, y);
+		this.color = color;
+	}
+
+	public ColorPoint(Point point, Color color) {
+		super(point);
+		this.color = color;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (!(obj instanceof ColorPoint)) {
+			return false;
+		}
+		return super.equals(obj) && ((ColorPoint) obj).color == color;
+	}
+
+	public static void main(String[] args) {
+		Point point = new Point(1, 2);
+		ColorPoint colorPoint = new ColorPoint(point, Color.RED);
+
+		// Symmetry violation
+		System.out.println(point.equals(colorPoint)); // true
+		System.out.println(colorPoint.equals(point)); // false
+	}
+
+}
+{% endhighlight %}
+
+그렇다면 위 equals 메소드가 대칭성을 위반하지 않도록 하려면 어떻게 해야할까? 일단 부모인 Point가 검사 대상이 되어도 false를 반환하지 말아야 하며 Point가 검사 대상일 경우에는 색상은 비교안하면 된다.
+
+아래와 같이 equals 메소드를 변경하면 되는 것이다. **하지만, 이것은 추이성을 위반한다. **
+{% highlight java %}
+public class ColorPoint extends Point {
+	// ...
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (!(obj instanceof Point)) {
+			return false;
+		}
+
+		if (!(obj instanceof ColorPoint)) {
+			return obj.equals(this);
+		}
+
+		return super.equals(obj) && ((ColorPoint) obj).color == color;
+	}
+	
+	public static void main(String[] args) {
+		Point point = new Point(1, 2);
+		ColorPoint colorPoint = new ColorPoint(point, Color.RED);
+
+		// Symmetry violation
+		System.out.println(point.equals(colorPoint)); // true
+		System.out.println(colorPoint.equals(point)); // true
+	}
+	
+{% endhighlight %}
+ 
+
+
 * **It is consistent: for any non-null reference values x and y, multiple invocations of x.equals(y) consistently return true or consistently return false, provided no information used in equals comparisons on the objects is modified.**
  
  

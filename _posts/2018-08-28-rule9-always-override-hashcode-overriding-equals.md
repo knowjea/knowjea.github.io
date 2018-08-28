@@ -11,14 +11,13 @@ comments: true
 자바에서 최상위 객체인 Object는 하위 객체들이 오버라이딩하여 사용하도록 설계된 메서드들이 있다. (equals, hashCode, toString, clone, finalize)
 그리고 이 메서드들은 일반 규약이 존재하는데 이를 따르지 않으면 자바에서 제공하는 클래스와 함께 사용할 때 제대로 동작하지 않는다.
 
-이번 장에서는 equals 메서드의 일반 규약을 작성한다.
+이번 장에서는 hashCode 메서드의 일반 규약을 작성한다.
 
- 
- 
-## equals 메서드
+## hashCode 메서드
 
-equals 메서드는 객체와 다른 객체가 동일한 지 여부를 반환한다. equals를 오버라이딩 하지 않았을 경우 최상위객체인 Object의 메서드가 호출된다.
-이 경우 오직 자기 자신하고만 같다. (메모리 주소가 동일)
+hashCode 메서드는 오브젝트의 해시 코드 값을 반환한다. 이 메서드는 java.util.HashMap과 같은 해시 테이블을 위해 자바에서 지원하고 있다.
+따라서 hashCode 메서드를 규약에 맞게 구현하지 않으면 해시 기반의 컬레션은 오동작하게 된다.
+
 
 {% highlight java %}
 public class Object {

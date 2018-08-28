@@ -323,5 +323,5 @@ obj.equals(null)는 항상 false를 반환해야 한다. instanceof에 null을 �
 	}
 {% endhighlight %}
 
-[link to Rule10](https://knowjea.github.io/facts/rule8-obey-the-general-overriding-equals.html).
+[link to Rule9](https://knowjea.github.io/%EA%B0%9C%EB%B0%9C/2018/08/28/rule9-always-override-hashcode-overriding-equals.html).
 

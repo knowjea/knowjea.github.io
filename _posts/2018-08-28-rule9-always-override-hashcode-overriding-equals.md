@@ -1,10 +1,9 @@
 ---
 layout: post
-title: "8. Obey the general contract when overriding equals (equals를 재정의할 때는 일반 규약을 따르라)"
+title: "9. Always override hashCode when you override equals (equals를 재정의할 때는 반드시 hashCode도 재정의하라)"
 author: "Gyeongjae Gwon"
 categories: 개발
 tags: [java, effective java]
-image: obey-the-rules.png
 comments: true
 ---
 
@@ -322,6 +321,4 @@ obj.equals(null)는 항상 false를 반환해야 한다. instanceof에 null을 �
 		return cp.point.equals(point) && cp.color.equals(color);
 	}
 {% endhighlight %}
-
-[link to Rule10](https://knowjea.github.io/facts/rule8-obey-the-general-overriding-equals.html).
 

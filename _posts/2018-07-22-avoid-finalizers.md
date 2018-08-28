@@ -273,4 +273,4 @@ public class ChildFinalizerGuardianTest extends ParentFinalizerGuardianTest {
 
 
 
-[link to Rule9](https://knowjea.github.io/facts/rule8-obey-the-general-overriding-equals.html).
+[link to Rule9](https://knowjea.github.io/%EA%B0%9C%EB%B0%9C/2018/07/29/rule8-obey-the-general-overriding-equals.html).

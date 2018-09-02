@@ -194,3 +194,5 @@ public final class String{
 그런데 위 String의 hashCode 메서드를 보면 'hash'라는 변수를 사용하여 0이 아닐 경우에는 'hash' 값을 가진 변수를 리턴한다.
 이는 해시코드를 재계산하는 대신 미리 캐시해 두어서 한번만 계산하도록 한 것이다. 다만, 이렇게 캐시를 사용할 경우에는 변경 불가능 클래스여야 한다.
 왜냐하면 중요 필드가 변경 될 경우, 해시값도 달라져야 하는데 캐시를 해두고 위 로직처럼 한다면 동일한 해시값을 계속 반환하기 때문이다.
+
+[link to Rule10](https://knowjea.github.io/%EA%B0%9C%EB%B0%9C/2018/09/02/rule10-always-override-toString.html).

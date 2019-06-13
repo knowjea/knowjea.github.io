@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "9. Always override hashCode when you override equals (equals를 재정의할 때는 반드시 hashCode도 재정의하라)"
-author: "Gyeongjae Gwon"
+author: "Know jea"
 categories: 개발
 tags: [java, effective java]
 comments: true

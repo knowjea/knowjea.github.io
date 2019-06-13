@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "10. Always override toString (toSring은 항상 재정의하라)"
+title: "12. Consider Implementing Comparable (Comparable 구현을 고려하라)"
 author: "Know jea"
 categories: 개발
 tags: [java, effective java]
@@ -77,4 +77,4 @@ public class PhoneNumberWithHashCode {
 
  
 
-[link to Rule11](https://knowjea.github.io/%EA%B0%9C%EB%B0%9C/2018/08/28/rule9-always-override-hashcode-overriding-equals.html).
+[link to Rule13](https://knowjea.github.io/%EA%B0%9C%EB%B0%9C/2018/09/27/rule13.html).

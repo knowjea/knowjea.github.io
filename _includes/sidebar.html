@@ -34,7 +34,7 @@
     <h1>{{ trans.recent_posts }}</h1>
     <ul>
         {% for post in site.posts limit:5 %}
-          <li><a href="{{ site.baseurl}}{{ post.url }}">{{ post.title }}</a></li>
+          <li><a href="{{ site.baseurl}}{{ post.url }}" style="font-size: small;">{{ post.title }}</a></li>
         {% endfor %}
     </ul>
 </div>
